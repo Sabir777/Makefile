@@ -12,6 +12,13 @@ path=$(pwd)
 # Путь до макета
 path_layout=layout_1_3_pan
 
+# Проверяю существует ли сессия: если да то подсоединяюсь к ней и выхожу из скрипта, если нет то создаю сессию
+if tmux has-session -t $name_session 2>/dev/null; then
+    # Если сессия существует, подключаюсь к ней
+    tmux attach-session -t $name_session
+    exit 0  # Выход из скрипта
+fi
+
 # Создаю сессию и окно; После создания отключаюсь от сессии
 tmux new-session -s $name_session -n $name_window -d
 
