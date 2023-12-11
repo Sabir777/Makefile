@@ -1,14 +1,15 @@
-hello.out: output.o main.o input.o factorial.o
-	g++ output.o main.o input.o factorial.o -o hello.out
+source_files := *.cpp
+source_files := $(wildcard $(source_files))
+source_files := $(notdir $(source_files))
+source_files := $(patsubst %.cpp, %.o, $(source_files))
 
-output.o: output.cpp functions.h
-	g++ -c output.cpp
+file.out: $(source_files)
+		g++ $^ -o $@
+			
+%.o: %.cpp
+		g++ -c $<
 
-main.o: main.cpp functions.h
-	g++ -c main.cpp
-
-input.o: input.cpp functions.h
-	g++ -c input.cpp
-
-factorial.o: factorial.cpp functions.h
-	g++ -c factorial.cpp
+output.o: functions.h
+factorial.o: functions.h
+input.o: functions.h
+main.o: functions.h

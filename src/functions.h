@@ -4,3 +4,5 @@
 int factorial(int);
 void output(int);
 int input();
+
+//новая версия
