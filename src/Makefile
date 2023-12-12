@@ -1,7 +1,5 @@
-source_files := *.cpp
-source_files := $(wildcard $(source_files))
-source_files := $(notdir $(source_files))
-source_files := $(patsubst %.cpp, %.o, $(source_files))
+source_files := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+
 
 file.out: $(source_files)
 		g++ $^ -o $@
@@ -13,3 +11,4 @@ output.o: functions.h
 factorial.o: functions.h
 input.o: functions.h
 main.o: functions.h
+
