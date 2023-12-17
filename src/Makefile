@@ -1,14 +1,9 @@
 source_files := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
-
 file.out: $(source_files)
 		g++ $^ -o $@
-			
+
 %.o: %.cpp
-		g++ -c $<
+		g++ -c -MD $<
 
-output.o: functions.h
-factorial.o: functions.h
-input.o: functions.h
-main.o: functions.h
-
+include $(wildcard *.d)
