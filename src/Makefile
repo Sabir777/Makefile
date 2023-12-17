@@ -1,9 +1,15 @@
-source_files := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+# source_files := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+# 
+# file.out: $(source_files)
+# 	g++ $^ -o $@
+# 
+# %.o: %.cpp
+# 	g++ -c -MD $<
+# 
+# include $(wildcard *.d)
 
-file.out: $(source_files)
-		g++ $^ -o $@
+source_dirs := . Editor TextLine
 
-%.o: %.cpp
-		g++ -c -MD $<
+all:
+	echo $(addprefix -I,$(source_dirs))
 
-include $(wildcard *.d)
