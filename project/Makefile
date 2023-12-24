@@ -11,3 +11,8 @@ VPATH := $(source_dirs)
 		g++ -c -MD $(addprefix -I,$(source_dirs)) $(compile_flags) $<
 
 include $(wildcard *.d)
+
+.PHONY: clean
+
+clean:
+	rm -fr ../bin
